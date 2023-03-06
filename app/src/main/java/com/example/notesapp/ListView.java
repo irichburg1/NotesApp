@@ -71,9 +71,9 @@ public class ListView extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        String sortBy = getSharedPreferences("MyContactListPreferences",
-                Context.MODE_PRIVATE).getString("sortfield", "contactname");
-        String sortOrder = getSharedPreferences("MyContactListPreferences",
+        String sortBy = getSharedPreferences("MyNotesPreferences",
+                Context.MODE_PRIVATE).getString("sortfield", "subjectname");
+        String sortOrder = getSharedPreferences("MyNotesPreferences",
                 Context.MODE_PRIVATE).getString("sortorder", "ASC");
 
         NotesDataSource ds = new NotesDataSource(this);
@@ -95,7 +95,7 @@ public class ListView extends AppCompatActivity {
             }
         }
         catch (Exception e) {
-            Toast.makeText(this, "Error retrieving contacts", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error retrieving notes", Toast.LENGTH_LONG).show();
         }
 
     }

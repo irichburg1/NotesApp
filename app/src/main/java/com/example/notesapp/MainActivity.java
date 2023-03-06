@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,14 +82,21 @@ public class MainActivity extends AppCompatActivity {
     private void setForEditing(boolean enabled) {
         EditText editTitle = findViewById(R.id.editTextTitle);
         EditText editContent = findViewById(R.id.editTextContent);
-
+        RadioGroup rgroup = findViewById(R.id.radioGroupSort);
+        RadioButton rbHigh = findViewById(R.id.radioButtonHigh);
+        RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
+        RadioButton rbLow = findViewById(R.id.radioButtonLow);
         Button buttonSave = findViewById(R.id.buttonSave);
 
         //ImageButton picture = findViewById(R.id.imageContact);
 
         editTitle.setEnabled(enabled);
         editContent.setEnabled(enabled);
+        rgroup.setEnabled(enabled);
         buttonSave.setEnabled(enabled);
+        rbHigh.setEnabled(enabled);
+        rbMedium.setEnabled(enabled);
+        rbLow.setEnabled(enabled);
 
         if (enabled) {
             editTitle.requestFocus();
@@ -183,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick (View view) {
                 boolean wasSuccessful;
                 hideKeyboard();
-                NotesDataSource ds = new NotesDataSource (MainActivity.this);
+                NotesDataSource ds = new NotesDataSource(MainActivity.this);
                 try {
                     ds.open();
 
@@ -210,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void hideKeyboard () {
         InputMethodManager imm = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
