@@ -32,7 +32,7 @@ public class NotesDataSource {
     }
 
 
-    public boolean insertContact(Note n) {
+    public boolean insertNotes(Note n) {
         boolean didSucceed = false;
         try{
             ContentValues initialValues = new ContentValues();
@@ -46,7 +46,7 @@ public class NotesDataSource {
                 initialValues.put("notesPicture", photo);
             }
 
-            didSucceed = database.insert("contact",null,initialValues) > 0;
+            didSucceed = database.insert("notes",null,initialValues) > 0;
         }
         catch (Exception e){
             //Do nothing - will return false if there is an exception
@@ -54,40 +54,33 @@ public class NotesDataSource {
         return didSucceed;
     }
 
-    public boolean updateContact(Contact c) {
+    public boolean updateNotes(Note n) {
         boolean didSucceed = false;
         try {
-            Long rowId = (long) c.getContactID();
+            Long rowId = (long) n.getNoteID();
             ContentValues updateValues = new ContentValues();
 
-            updateValues.put("contactname", c.getContactName());
-            updateValues.put("streetaddress", c.getStreetAddress());
-            updateValues.put("city", c.getCity());
-            updateValues.put("state", c.getState());
-            updateValues.put("zipcode", c.getZipCode());
-            updateValues.put("phonenumber", c.getPhoneNumber());
-            updateValues.put("cellnumber", c.getCellNumber());
-            updateValues.put("email", c.geteMail());
-            updateValues.put("birthday", String.valueOf(c.getBirthday().getTimeInMillis()));
+            updateValues.put("notesTitle", n.getNotesTitle());
+            updateValues.put("notesContent", n.getNotesContent());
 
-            if (c.getPicture() != null) {
+            if (n.getPicture() != null) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                c.getPicture().compress(Bitmap.CompressFormat.PNG, 100, baos);
+                n.getPicture().compress(Bitmap.CompressFormat.PNG, 100, baos);
                 byte[] photo = baos.toByteArray();
-                updateValues.put("contactphoto", photo);
+                updateValues.put("notesPicture", photo);
             }
 
-            didSucceed = database.update("contact", updateValues, "_id=" + rowId, null) > 0;
+            didSucceed = database.update("notes", updateValues, "_id=" + rowId, null) > 0;
         } catch (Exception e) {
             //Do nothing - will return false if there is an exception
         }
         return didSucceed;
     }
 
-    public int getLastContactId() {
+    public int getLastNoteId() {
         int lastId;
         try {
-            String query = "Select MAX(_id) from contact";
+            String query = "Select MAX(_id) from notes";
             Cursor cursor = database.rawQuery (query, null);
             cursor.moveToFirst();
             lastId = cursor.getInt(0);
@@ -98,78 +91,61 @@ public class NotesDataSource {
         }
         return lastId;
     }
-    public ArrayList<String> getContactName() {
-        ArrayList<String> contactNames = new ArrayList<>();
+
+    public ArrayList<String> getNoteTitle() {
+        ArrayList<String> noteTitles = new ArrayList<>();
         try {
-            String query = "Select contactname from contact";
+            String query = "Select notesTitle from notes";
             Cursor cursor = database.rawQuery(query, null);
 
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                contactNames.add(cursor.getString(0));
+                noteTitles.add(cursor.getString(0));
                 cursor.moveToNext();
             }
             cursor.close();
         }
         catch (Exception e) {
-            contactNames = new ArrayList<String>();
+            noteTitles = new ArrayList<String>();
         }
-        return contactNames;
+        return noteTitles;
     }
 
-    public ArrayList<Contact> getContacts(String sortField, String sortOrder) {
+    public ArrayList<Note> getContacts(String sortField, String sortOrder) {
 
-        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        ArrayList<Note> notes = new ArrayList<Note>();
         try {
-            String query = "SELECT * FROM contact ORDER BY " + sortField + " " + sortOrder;
+            String query = "SELECT * FROM notes ORDER BY " + sortField + " " + sortOrder;
 
             Cursor cursor = database.rawQuery(query, null);
 
-            Contact newContact;
+            Note newNote;
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                newContact = new Contact();
-                newContact.setContactID(cursor.getInt(0));
-                newContact.setContactName(cursor.getString(1));
-                newContact.setStreetAddress(cursor.getString(2));
-                newContact.setCity(cursor.getString(3));
-                newContact.setState(cursor.getString(4));
-                newContact.setZipCode(cursor.getString(5));
-                newContact.setPhoneNumber(cursor.getString(6));
-                newContact.setCellNumber(cursor.getString(7));
-                newContact.seteMail(cursor.getString(8));
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(Long.valueOf(cursor.getString(9)));
-                newContact.setBirthday(calendar);
-                contacts.add(newContact);
+                newNote = new Note();
+                newNote.setNoteID(cursor.getInt(0));
+                newNote.setNotesTitle(cursor.getString(1));
+                newNote.setNotesContent(cursor.getString(2));
+                notes.add(newNote);
                 cursor.moveToNext();
             }
             cursor.close();
         }
         catch (Exception e) {
-            contacts = new ArrayList<Contact>();
+            notes = new ArrayList<Note>();
         }
-        return contacts;
+        return notes;
     }
 
-    public Contact getSpecificContact(int contactId) {
-        Contact contact = new Contact();
-        String query = "SELECT  * FROM contact WHERE _id =" + contactId;
+    public Note getSpecificContact(int noteId) {
+        Note currentNote = new Note();
+        String query = "SELECT  * FROM notes WHERE _id =" + noteId;
         Cursor cursor = database.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
-            contact.setContactID(cursor.getInt(0));
-            contact.setContactName(cursor.getString(1));
-            contact.setStreetAddress(cursor.getString(2));
-            contact.setCity(cursor.getString(3));
-            contact.setState(cursor.getString(4));
-            contact.setZipCode(cursor.getString(5));
-            contact.setPhoneNumber(cursor.getString(6));
-            contact.setCellNumber(cursor.getString(7));
-            contact.seteMail(cursor.getString(8));
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(Long.valueOf(cursor.getString(9)));
-            contact.setBirthday(calendar);
+            currentNote.setContactID(cursor.getInt(0));
+            currentNote.setContactName(cursor.getString(1));
+            currentNote.setStreetAddress(cursor.getString(2));
 
             byte[] photo = cursor.getBlob(10);
             if (photo != null) {
