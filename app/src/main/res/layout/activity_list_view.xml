@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listView">
+    tools:context=".ListView">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotes"
@@ -73,19 +73,19 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:backgroundTint="@color/navbar_background"
-            android:contentDescription="@string/button_to_display_a_list_of_contacts"
+            android:contentDescription="@string/button_to_display_a_list_of_notes"
             android:padding="0dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/list" />
 
         <ImageButton
-            android:id="@+id/imageButtonMap"
+            android:id="@+id/imageButtonAdd"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:backgroundTint="@color/navbar_background"
-            android:contentDescription="@string/button_to_display_a_map_with_contact_locations"
+            android:contentDescription="@string/button_to_add_a_note"
             android:padding="0dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/add_outline" />
@@ -95,7 +95,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-
             android:adjustViewBounds="true"
             android:background="@color/navbar_background"
             android:contentDescription="@string/button_to_display_the_app_settings"

@@ -95,19 +95,19 @@
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:backgroundTint="@color/navbar_background"
-        android:contentDescription="@string/button_to_display_a_list_of_contacts"
+        android:contentDescription="@string/button_to_display_a_list_of_notes"
         android:padding="0dp"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/list_outline" />
 
     <ImageButton
-        android:id="@+id/imageButtonMap"
+        android:id="@+id/imageButtonAdd"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:backgroundTint="@color/navbar_background"
-        android:contentDescription="@string/button_to_display_a_map_with_contact_locations"
+        android:contentDescription="@string/button_to_add_a_note"
         android:padding="0dp"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/add_outline" />

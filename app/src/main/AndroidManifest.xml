@@ -13,14 +13,7 @@
         android:theme="@style/Theme.NotesApp"
         tools:targetApi="31">
         <activity
-            android:name=".listItem"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".listView"
+            android:name=".ListView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
