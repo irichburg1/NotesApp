@@ -33,7 +33,7 @@ public class ListView extends AppCompatActivity {
 
         try {
             ds.open();
-            //notes = ds.getNote(sortBy, sortOrder);
+            notes = ds.getNotes(sortBy, sortOrder);
             ds.close();
         } catch (Exception e) {
             Toast.makeText(this, "Error retrieving notes", Toast.LENGTH_LONG).show();

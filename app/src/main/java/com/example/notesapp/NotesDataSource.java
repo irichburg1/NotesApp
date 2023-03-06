@@ -111,7 +111,7 @@ public class NotesDataSource {
         return noteTitles;
     }
 
-    public ArrayList<Note> getContacts(String sortField, String sortOrder) {
+    public ArrayList<Note> getNotes(String sortField, String sortOrder) {
 
         ArrayList<Note> notes = new ArrayList<Note>();
         try {
