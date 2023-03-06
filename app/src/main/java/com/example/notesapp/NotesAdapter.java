@@ -114,7 +114,7 @@ public class NotesAdapter extends RecyclerView.Adapter{
             NotesDataSource ds = new NotesDataSource(parentContext);
             try {
                 ds.open();
-                boolean didDelete = ds.deleteContact(note.getNoteID());
+                boolean didDelete = ds.deleteNote(note.getNoteID());
                 ds.close();
                 if(didDelete) {
                     noteData.remove(position);

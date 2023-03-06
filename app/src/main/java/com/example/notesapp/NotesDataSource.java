@@ -15,7 +15,6 @@ import java.util.Calendar;
 
 public class NotesDataSource {
 
-
     private SQLiteDatabase database;
     private NotesDBHelper dbHelper;
 
@@ -31,7 +30,6 @@ public class NotesDataSource {
         dbHelper.close();
     }
 
-
     public boolean insertNotes(Note n) {
         boolean didSucceed = false;
         try{
@@ -39,6 +37,7 @@ public class NotesDataSource {
 
             initialValues.put("notesTitle",n.getNotesTitle());
             initialValues.put("notesContent",n.getNotesContent());
+            initialValues.put("importance",n.getImportance());
             if (n.getPicture() != null) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 n.getPicture().compress(Bitmap.CompressFormat.PNG, 100, baos);
@@ -62,6 +61,8 @@ public class NotesDataSource {
 
             updateValues.put("notesTitle", n.getNotesTitle());
             updateValues.put("notesContent", n.getNotesContent());
+            updateValues.put("importance", n.getImportance());
+
 
             if (n.getPicture() != null) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -126,6 +127,7 @@ public class NotesDataSource {
                 newNote.setNoteID(cursor.getInt(0));
                 newNote.setNotesTitle(cursor.getString(1));
                 newNote.setNotesContent(cursor.getString(2));
+                newNote.setImportance(cursor.getString(3));
                 notes.add(newNote);
                 cursor.moveToNext();
             }
@@ -146,6 +148,8 @@ public class NotesDataSource {
             currentNote.setNoteID(cursor.getInt(0));
             currentNote.setNotesTitle(cursor.getString(1));
             currentNote.setNotesContent(cursor.getString(2));
+            currentNote.setImportance(cursor.getString(3));
+
 
             byte[] photo = cursor.getBlob(10);
             if (photo != null) {
@@ -168,8 +172,5 @@ public class NotesDataSource {
         }
         return didDelete;
     }
-
-
-
 
 }
