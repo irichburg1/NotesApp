@@ -125,41 +125,41 @@
                 android:inputType="textMultiLine" />
         </ScrollView>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/radioGroupSort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="75dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RadioButton
+                    android:id="@+id/radioButtonHigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High   " />
+
+                <RadioButton
+                    android:id="@+id/radioButtonMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium   " />
+
+                <RadioButton
+                    android:id="@+id/radioButtonLow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Low" />
+
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RadioGroup
-            android:id="@+id/radioGroupSort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="75dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <RadioButton
-                android:id="@+id/radioButtonHigh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High   " />
-
-            <RadioButton
-                android:id="@+id/radioButtonMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medium   " />
-
-            <RadioButton
-                android:id="@+id/radioButtonLow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Low" />
-
-        </RadioGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
