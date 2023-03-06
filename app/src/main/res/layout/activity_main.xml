@@ -71,7 +71,7 @@
             android:contentDescription="@string/button_to_display_a_map_with_contact_locations"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/newItem" />
+            app:srcCompat="@drawable/newItemfilled" />
 
         <ImageButton
             android:id="@+id/imageButtonSettings"
