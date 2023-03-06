@@ -10,6 +10,7 @@
     <color name="background">#F4F3F7</color>
     <color name="unselectedText">#6F687A</color>
     <color name="selectedText">#000000</color>
+    <color name="black">#000000</color>
 
 
 

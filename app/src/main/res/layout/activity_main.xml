@@ -74,7 +74,7 @@
             android:contentDescription="@string/button_to_add_a_note"
             android:padding="0dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/newItemfilled" />
+            app:srcCompat="@drawable/new_item_filled" />
 
         <ImageButton
             android:id="@+id/imageButtonSettings"
