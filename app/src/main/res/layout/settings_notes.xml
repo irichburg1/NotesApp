@@ -77,4 +77,51 @@
             android:layout_height="wrap_content"
             android:text="Descending" />
     </RadioGroup>
+
+    <LinearLayout
+    android:id="@+id/linearLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@color/navbar_background"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <ImageButton
+        android:id="@+id/imageButtonList"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/navbar_background"
+        android:contentDescription="@string/button_to_display_a_list_of_contacts"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/list_outline" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMap"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/navbar_background"
+        android:contentDescription="@string/button_to_display_a_map_with_contact_locations"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/add_outline" />
+
+    <ImageButton
+        android:id="@+id/imageButtonSettings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="@color/navbar_background"
+        android:contentDescription="@string/button_to_display_the_app_settings"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/settings" />
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
