@@ -43,7 +43,7 @@ public class ListView extends AppCompatActivity {
         initSettingsButton();
 
         String sortBy = getSharedPreferences("MyNotesPreferences",
-                Context.MODE_PRIVATE).getString("sortfield", "subjectname");
+                Context.MODE_PRIVATE).getString("sortfield", "notesTitle");
         String sortOrder = getSharedPreferences("MyNotesPreferences",
                 Context.MODE_PRIVATE).getString("sortorder", "ASC");
 
@@ -72,7 +72,7 @@ public class ListView extends AppCompatActivity {
         super.onResume();
 
         String sortBy = getSharedPreferences("MyNotesPreferences",
-                Context.MODE_PRIVATE).getString("sortfield", "subjectname");
+                Context.MODE_PRIVATE).getString("sortfield", "notesTitle");
         String sortOrder = getSharedPreferences("MyNotesPreferences",
                 Context.MODE_PRIVATE).getString("sortorder", "ASC");
 
@@ -151,5 +151,6 @@ public class ListView extends AppCompatActivity {
             }
         });
     }
+
 
 }

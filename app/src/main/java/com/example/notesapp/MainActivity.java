@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            initContact(extras.getInt("contactId"));
+            initNotes(extras.getInt("noteId"));
         }
         else {
             currentNote = new Note();
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(editAddress.getWindowToken(), 0);
     }
 
-    private void initContact(int id) {
+    private void initNotes(int id) {
         NotesDataSource ds = new NotesDataSource(MainActivity.this);
         try {
             ds.open();
@@ -239,12 +239,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Load Contact Failed", Toast.LENGTH_LONG).show();
         }
 
-        EditText editName = findViewById(R.id.editTextTitle);
-        EditText editAddress = findViewById(R.id.editTextContent);
+        EditText editTitle = findViewById(R.id.editTextTitle);
+        EditText editContent = findViewById(R.id.editTextContent);
 
 
-        editName.setText(currentNote.getNotesTitle());
-        editAddress.setText(currentNote.getNotesContent());
+        editTitle.setText(currentNote.getNotesTitle());
+        editContent.setText(currentNote.getNotesContent());
 
     }
 
