@@ -143,25 +143,25 @@ public class NotesDataSource {
         Cursor cursor = database.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
-            currentNote.setContactID(cursor.getInt(0));
-            currentNote.setContactName(cursor.getString(1));
-            currentNote.setStreetAddress(cursor.getString(2));
+            currentNote.setNoteID(cursor.getInt(0));
+            currentNote.setNotesTitle(cursor.getString(1));
+            currentNote.setNotesContent(cursor.getString(2));
 
             byte[] photo = cursor.getBlob(10);
             if (photo != null) {
                 ByteArrayInputStream imageStream = new ByteArrayInputStream(photo);
                 Bitmap thePicture= BitmapFactory.decodeStream(imageStream);
-                contact.setPicture(thePicture);
+                currentNote.setPicture(thePicture);
             }
             cursor.close();
         }
-        return contact;
+        return currentNote;
     }
 
-    public boolean deleteContact(int contactId) {
+    public boolean deleteContact(int notesID) {
         boolean didDelete = false;
         try {
-            didDelete = database.delete("contact", "_id=" + contactId, null) > 0;
+            didDelete = database.delete("notes", "_id=" + notesID, null) > 0;
         }
         catch (Exception e) {
             //Do nothing -return value already set to false
