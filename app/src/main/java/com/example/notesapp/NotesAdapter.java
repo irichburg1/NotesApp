@@ -1,5 +1,6 @@
 package com.example.notesapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -68,7 +69,7 @@ public class NotesAdapter extends RecyclerView.Adapter{
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
             ContactViewHolder cvh = (ContactViewHolder) holder;
 
             if(count % 3 == 0){
@@ -137,4 +138,4 @@ public class NotesAdapter extends RecyclerView.Adapter{
 
     }
 
-}
+

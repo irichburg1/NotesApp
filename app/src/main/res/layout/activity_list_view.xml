@@ -36,14 +36,14 @@
             android:layout_marginStart="32dp"
             android:text="Delete:"
             android:textColor="@color/unselectedText"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonAddContact"
-            app:layout_constraintEnd_toStartOf="@+id/buttonAddContact"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonAddNote"
+            app:layout_constraintEnd_toStartOf="@+id/buttonAddNote"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonAddContact"
+            android:id="@+id/buttonAddNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
