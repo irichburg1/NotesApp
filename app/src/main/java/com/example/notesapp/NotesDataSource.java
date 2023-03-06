@@ -137,7 +137,7 @@ public class NotesDataSource {
         return notes;
     }
 
-    public Note getSpecificContact(int noteId) {
+    public Note getSpecificNote(int noteId) {
         Note currentNote = new Note();
         String query = "SELECT  * FROM notes WHERE _id =" + noteId;
         Cursor cursor = database.rawQuery(query, null);
@@ -158,7 +158,7 @@ public class NotesDataSource {
         return currentNote;
     }
 
-    public boolean deleteContact(int notesID) {
+    public boolean deleteNote(int notesID) {
         boolean didDelete = false;
         try {
             didDelete = database.delete("notes", "_id=" + notesID, null) > 0;
