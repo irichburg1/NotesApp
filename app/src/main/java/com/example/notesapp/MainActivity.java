@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         setForEditing(false);
         initTextChangedEvents();
+        radioButtonChanged();
         initSaveButton ();
     }
 
@@ -158,7 +160,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initSaveButton () {
+    private void radioButtonChanged(){
+        RadioButton rbHigh = findViewById(R.id.radioButtonHigh);
+        RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
+        RadioButton rbLow = findViewById(R.id.radioButtonLow);
+
+        if (rbHigh.isChecked()) {
+            currentNote.setImportance(rbHigh.getText().toString());
+        }
+        else if (rbMedium.isChecked()){
+            currentNote.setImportance(rbMedium.getText().toString());
+        }
+        else{
+            currentNote.setImportance(rbLow.getText().toString());
+        }
+    }
+
+    private void initSaveButton() {
         Button saveButton = findViewById (R.id.buttonSave);
         saveButton.setOnClickListener(new View.OnClickListener () {
             @Override
@@ -174,9 +192,7 @@ public class MainActivity extends AppCompatActivity {
                         if (wasSuccessful) {
                             int newId = ds.getLastNoteId();
                             currentNote.setNoteID(newId);
-
                         }
-
                     }
                     else {
                         wasSuccessful = ds.updateNotes(currentNote);
