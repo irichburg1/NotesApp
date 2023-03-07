@@ -10,7 +10,7 @@ public class Note {
     private int noteID;
     private String notesTitle;
     private String notesContent;
-    private String importance;
+    private int importance;
     private Bitmap picture;
 
     public Note () {
@@ -33,9 +33,9 @@ public class Note {
         this.notesTitle = notesTitle;
     }
 
-    public String getImportance() { return importance;}
+    public int getImportance() { return importance;}
 
-    public void setImportance(String importance) {
+    public void setImportance(int importance) {
         this.importance = importance;
     }
 

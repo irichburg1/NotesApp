@@ -127,7 +127,7 @@ public class NotesDataSource {
                 newNote.setNoteID(cursor.getInt(0));
                 newNote.setNotesTitle(cursor.getString(1));
                 newNote.setNotesContent(cursor.getString(2));
-                newNote.setImportance(cursor.getString(3));
+                newNote.setImportance(cursor.getInt(3));
                 notes.add(newNote);
                 cursor.moveToNext();
             }
@@ -148,7 +148,7 @@ public class NotesDataSource {
             currentNote.setNoteID(cursor.getInt(0));
             currentNote.setNotesTitle(cursor.getString(1));
             currentNote.setNotesContent(cursor.getString(2));
-            currentNote.setImportance(cursor.getString(3));
+            currentNote.setImportance(cursor.getInt(3));
 
 
             /*byte[] photo = cursor.getBlob(10);

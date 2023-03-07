@@ -8,14 +8,14 @@ import android.util.Log;
 
 public class NotesDBHelper  extends SQLiteOpenHelper  {
     private static final String DATABASE_NAME = "myNotes.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     //Database creation sql statement
 
     private static final String CREATE_TABLE_NOTES=
             "create table notes (_id integer primary key autoincrement," +
                     "notesTitle text not null, notesContent text," +
-                    "importance text not null," +
+                    "importance integer not null," +
                     "notesPicture blob);";
 
     public NotesDBHelper (Context context ) {

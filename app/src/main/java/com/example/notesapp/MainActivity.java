@@ -179,12 +179,12 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton rbLow = findViewById(R.id.radioButtonLow);
 
                 if (rbHigh.isChecked()) {
-                    currentNote.setImportance(rbHigh.getText().toString());
+                    currentNote.setImportance(1);
                 }
                 else if (rbMedium.isChecked()) {
-                    currentNote.setImportance(rbMedium.getText().toString());
+                    currentNote.setImportance(2);
                 } else {
-                    currentNote.setImportance(rbLow.getText().toString());
+                    currentNote.setImportance(3);
                 }
             }
 
@@ -249,6 +249,19 @@ public class MainActivity extends AppCompatActivity {
 
         EditText editTitle = findViewById(R.id.editTextTitle);
         EditText editContent = findViewById(R.id.editTextContent);
+        RadioGroup rgImportance = findViewById(R.id.radioGroupSort);
+        RadioButton rbHigh = findViewById(R.id.radioButtonHigh);
+        RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
+        RadioButton rbLow = findViewById(R.id.radioButtonLow);
+
+        if (currentNote.getImportance()==1) {
+            rbHigh.setChecked(true);
+        }
+        else if (currentNote.getImportance()==2) {
+            rbMedium.setChecked(true);
+        } else {
+            rbLow.setChecked(true);
+        }
 
 
         editTitle.setText(currentNote.getNotesTitle());
