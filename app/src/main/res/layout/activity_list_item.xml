@@ -42,4 +42,17 @@
         android:text="Importance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNoteSubject" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="92dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Date"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/textNoteSubject"
+        app:layout_constraintStart_toEndOf="@+id/textNoteSubject" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

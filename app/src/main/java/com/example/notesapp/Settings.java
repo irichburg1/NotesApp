@@ -53,21 +53,21 @@ public class Settings extends AppCompatActivity {
 
     private void initSettings(){
         String sortBy = getSharedPreferences("MyNotesPreferences",
-                Context.MODE_PRIVATE).getString("sortfield","subjectname");
+                Context.MODE_PRIVATE).getString("sortfield","notestitle");
         String sortOrder = getSharedPreferences("MyNotesPreferences",
                 Context.MODE_PRIVATE).getString("sortorder","ASC");
 
-        RadioButton rbName = findViewById(R.id.radioSubject);
-        RadioButton rbCity = findViewById(R.id.radioImportance);
-        RadioButton rbBirthday = findViewById(R.id.radioDate);
-        if(sortBy.equalsIgnoreCase("subjectname")) {
-            rbName.setChecked(true);
+        RadioButton rbSubject = findViewById(R.id.radioSubject);
+        RadioButton rbImportance = findViewById(R.id.radioImportance);
+        RadioButton rbDate = findViewById(R.id.radioDate);
+        if(sortBy.equalsIgnoreCase("notestitle")) {
+            rbSubject.setChecked(true);
         }
         else if (sortBy.equalsIgnoreCase("importance")) {
-            rbCity.setChecked(true);
+            rbImportance.setChecked(true);
         }
         else{
-            rbBirthday.setChecked(true);
+            rbDate.setChecked(true);
         }
 
         RadioButton rbAscending = findViewById(R.id.radioAscending);
@@ -85,14 +85,14 @@ public class Settings extends AppCompatActivity {
         rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton rbName = findViewById(R.id.radioSubject);
-                RadioButton rbCity = findViewById(R.id.radioImportance);
-                if(rbName.isChecked()) {
+                RadioButton rbSubject = findViewById(R.id.radioSubject);
+                RadioButton rbImportance = findViewById(R.id.radioImportance);
+                if(rbSubject.isChecked()) {
                     getSharedPreferences("MyNotesPreferences",
                             Context.MODE_PRIVATE).edit()
-                            .putString("sortfield","subjectname").apply();
+                            .putString("sortfield","notestitle").apply();
                 }
-                else if (rbCity.isChecked()) {
+                else if (rbImportance.isChecked()) {
                     getSharedPreferences("MyNotesPreferences",
                             Context.MODE_PRIVATE).edit()
                             .putString("sortfield","importance").apply();
@@ -125,6 +125,5 @@ public class Settings extends AppCompatActivity {
             }
         });
     }
-
 
 }
