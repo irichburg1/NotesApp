@@ -27,8 +27,9 @@ public class ListView extends AppCompatActivity {
             RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
             int position = viewHolder.getAdapterPosition();
             int noteId = notes.get(position).getNoteID();
+            System.out.println (noteId);
             Intent intent = new Intent(ListView.this, MainActivity.class);
-            intent.putExtra("noteId", noteId);
+            intent.putExtra("noteID", noteId);
             startActivity(intent);
         }
     };

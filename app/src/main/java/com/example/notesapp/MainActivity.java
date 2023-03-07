@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            initNotes(extras.getInt("noteId"));
+            initNotes(extras.getInt("noteID"));
         }
         else {
             currentNote = new Note();
@@ -169,19 +169,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void radioButtonChanged(){
-        RadioButton rbHigh = findViewById(R.id.radioButtonHigh);
-        RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
-        RadioButton rbLow = findViewById(R.id.radioButtonLow);
+        RadioGroup rgImportance = findViewById(R.id.radioGroupSort);
+        rgImportance.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener(){
 
-        if (rbHigh.isChecked()) {
-            currentNote.setImportance(rbHigh.getText().toString());
-        }
-        else if (rbMedium.isChecked()){
-            currentNote.setImportance(rbMedium.getText().toString());
-        }
-        else{
-            currentNote.setImportance(rbLow.getText().toString());
-        }
+            @Override
+            public void onCheckedChanged (RadioGroup radioGroup, int i) {
+                RadioButton rbHigh = findViewById(R.id.radioButtonHigh);
+                RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
+                RadioButton rbLow = findViewById(R.id.radioButtonLow);
+
+                if (rbHigh.isChecked()) {
+                    currentNote.setImportance(rbHigh.getText().toString());
+                }
+                else if (rbMedium.isChecked()) {
+                    currentNote.setImportance(rbMedium.getText().toString());
+                } else {
+                    currentNote.setImportance(rbLow.getText().toString());
+                }
+            }
+
+        });
+
     }
 
     private void initSaveButton() {
