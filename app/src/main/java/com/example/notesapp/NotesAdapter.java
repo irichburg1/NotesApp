@@ -74,17 +74,17 @@ public class NotesAdapter extends RecyclerView.Adapter{
 
             if(count % 3 == 0){
                 count += 1;
-                cvh.getNoteTextView().setTextColor(Color.parseColor("#BC88F8"));
+                cvh.getNoteTextView().setTextColor(Color.parseColor("#009688"));
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
             }
             else if(count % 3 == 1){
-                cvh.getNoteTextView().setTextColor(Color.parseColor("#2295F2"));
+                cvh.getNoteTextView().setTextColor(Color.parseColor("#009688"));
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
                 count += 1;
             }
             else{
                 count += 1;
-                cvh.getNoteTextView().setTextColor(Color.parseColor("#00FF04"));
+                cvh.getNoteTextView().setTextColor(Color.parseColor("#009688"));
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
             }
 

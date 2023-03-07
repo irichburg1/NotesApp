@@ -56,3 +56,6 @@ public class Note {
         this.picture = picture;
     }
 }
+
+
+

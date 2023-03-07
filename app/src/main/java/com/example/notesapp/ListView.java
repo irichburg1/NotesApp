@@ -101,7 +101,6 @@ public class ListView extends AppCompatActivity {
 
     }
 
-
     private void initListButton() {
         ImageButton ibList = findViewById (R.id.imageButtonList);
         ibList.setEnabled(false);
@@ -148,7 +147,6 @@ public class ListView extends AppCompatActivity {
                 boolean status = compoundButton.isChecked();
                 noteAdapter.setDelete(status);
                 noteAdapter.notifyDataSetChanged();
-
             }
         });
     }
