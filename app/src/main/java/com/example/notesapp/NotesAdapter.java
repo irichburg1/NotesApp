@@ -78,23 +78,31 @@ public class NotesAdapter extends RecyclerView.Adapter{
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
             ContactViewHolder cvh = (ContactViewHolder) holder;
 
-            if(count % 3 == 0){
+            if(count % 2 == 0){
                 count += 1;
                 cvh.getNoteTextView().setTextColor(Color.parseColor("#009688"));
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
-            }
-            else if(count % 3 == 1){
-                cvh.getNoteTextView().setTextColor(Color.parseColor("#009688"));
-                cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
-                count += 1;
             }
             else{
-                count += 1;
-                cvh.getNoteTextView().setTextColor(Color.parseColor("#009688"));
+                cvh.getNoteTextView().setTextColor(Color.parseColor("#A187FF"));
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
+                count += 1;
             }
 
-            cvh.getImportanceTextView().setText( (noteData.get(position).getImportance())+"");
+
+
+            int noteImportance = (noteData.get(position).getImportance());
+            String strNoteImportance = "1";
+
+            if (noteImportance == 1) {
+                strNoteImportance = "High";
+            } else if (noteImportance == 2) {
+                strNoteImportance = "Medium";
+            } else {
+                strNoteImportance = "Low";
+            }
+            cvh.getImportanceTextView().setText(strNoteImportance);
+
             cvh.getDateTextView().setText(noteData.get(position).getDate());
 
             if (isDeleting) {
