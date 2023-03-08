@@ -252,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
         RadioButton rbLow = findViewById(R.id.radioButtonLow);
 
+        System.out.println (currentNote.getImportance());
         if (currentNote.getImportance()==1) {
             rbHigh.setChecked(true);
         }

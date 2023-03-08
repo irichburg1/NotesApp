@@ -150,13 +150,13 @@ public class NotesDataSource {
             currentNote.setNotesContent(cursor.getString(2));
             currentNote.setImportance(cursor.getInt(3));
 
-
+/*
             byte[] photo = cursor.getBlob(10);
             if (photo != null) {
                 ByteArrayInputStream imageStream = new ByteArrayInputStream(photo);
                 Bitmap thePicture= BitmapFactory.decodeStream(imageStream);
                 currentNote.setPicture(thePicture);
-            }
+            }*/
             cursor.close();
         }
         return currentNote;

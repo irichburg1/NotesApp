@@ -88,7 +88,17 @@ public class NotesAdapter extends RecyclerView.Adapter{
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
             }
 
-            cvh.getImportanceTextView().setText(noteData.get(position).getImportance());
+            int noteImportance = (noteData.get(position).getImportance());
+            String strNoteImportance = "1";
+
+            if (noteImportance == 1) {
+                strNoteImportance = "High";
+            } else if (noteImportance == 2) {
+                strNoteImportance = "Medium";
+            } else {
+                strNoteImportance = "Low";
+            }
+            cvh.getImportanceTextView().setText(strNoteImportance);
 
             if (isDeleting) {
                 cvh.getDeleteButton().setVisibility(View.VISIBLE);
