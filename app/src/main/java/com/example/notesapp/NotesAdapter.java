@@ -109,7 +109,7 @@ public class NotesAdapter extends RecyclerView.Adapter{
             String unformattedDate = noteData.get(position).getDate();
             String[] datesplit = unformattedDate.split("/");
 
-            String formattedDate = datesplit [1] + datesplit [2] + datesplit[0] ;
+            String formattedDate = datesplit [1] + "/" + datesplit [2] + "/" + datesplit[0] ;
             cvh.getDateTextView().setText(formattedDate);
 
             if (isDeleting) {
