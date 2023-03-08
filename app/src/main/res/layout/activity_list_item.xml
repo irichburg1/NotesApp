@@ -37,10 +37,10 @@
         android:id="@+id/textImportance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="4dp"
         android:text="Importance"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewDate"
         app:layout_constraintTop_toBottomOf="@+id/textNoteSubject" />
 
     <TextView
@@ -48,8 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@id/textNoteSubject"
-        app:layout_constraintStart_toEndOf="@+id/textNoteSubject" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNoteSubject" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
