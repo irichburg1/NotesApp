@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class Note {
 
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 
     private int noteID;
     private String notesTitle;

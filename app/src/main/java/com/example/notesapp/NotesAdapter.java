@@ -13,7 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NotesAdapter extends RecyclerView.Adapter{
 
@@ -88,7 +91,6 @@ public class NotesAdapter extends RecyclerView.Adapter{
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
                 count += 1;
             }
-
 
 
             int noteImportance = (noteData.get(position).getImportance());
