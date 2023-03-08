@@ -113,12 +113,12 @@ public class Settings extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 RadioButton rbAscending = findViewById(R.id.radioAscending);
                 if(rbAscending.isChecked()) {
-                    getSharedPreferences("MyContactListPreferences",
+                    getSharedPreferences("MyNotesPreferences",
                             Context.MODE_PRIVATE).edit()
                             .putString("sortorder","ASC").apply();
                 }
                 else{
-                    getSharedPreferences("MyContactListPreferences",
+                    getSharedPreferences("MyNotesPreferences",
                             Context.MODE_PRIVATE).edit()
                             .putString("sortorder","DESC").apply();
                 }
