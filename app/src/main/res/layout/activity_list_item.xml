@@ -27,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_weight="1"
         android:text="Note Subject"
-        android:textColor="#5093F8"
+        android:textColor="#A187FF"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,15 +43,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNoteSubject" />
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="92dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:ems="10"
-        android:inputType="date"
-        android:text="Date"
-        android:textSize="14sp"
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@id/textNoteSubject"
         app:layout_constraintStart_toEndOf="@+id/textNoteSubject" />
 

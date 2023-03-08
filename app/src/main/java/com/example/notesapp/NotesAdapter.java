@@ -29,11 +29,13 @@ public class NotesAdapter extends RecyclerView.Adapter{
             public TextView textViewNote;
             public TextView textImportance;
             public Button deleteButton;
+            public TextView textDate;
 
             public ContactViewHolder(@NonNull View itemView) {
                 super(itemView);
                 textViewNote = itemView.findViewById(R.id.textNoteSubject);
                 textImportance = itemView.findViewById(R.id.textImportance);
+                textDate = itemView.findViewById(R.id.textViewDate);
                 deleteButton = itemView.findViewById(R.id.buttonDeleteContact);
                 itemView.setTag(this);
                 itemView.setOnClickListener(mOnItemClickListener);
@@ -45,6 +47,10 @@ public class NotesAdapter extends RecyclerView.Adapter{
 
             public TextView getImportanceTextView() {
                 return textImportance;
+            }
+
+            public TextView getDateTextView() {
+                return textDate;
             }
 
             public Button getDeleteButton() {
@@ -88,17 +94,8 @@ public class NotesAdapter extends RecyclerView.Adapter{
                 cvh.getNoteTextView().setText(noteData.get(position).getNotesTitle());
             }
 
-            int noteImportance = (noteData.get(position).getImportance());
-            String strNoteImportance = "1";
-
-            if (noteImportance == 1) {
-                strNoteImportance = "High";
-            } else if (noteImportance == 2) {
-                strNoteImportance = "Medium";
-            } else {
-                strNoteImportance = "Low";
-            }
-            cvh.getImportanceTextView().setText(strNoteImportance);
+            cvh.getImportanceTextView().setText( (noteData.get(position).getImportance())+"");
+            cvh.getDateTextView().setText(noteData.get(position).getDate());
 
             if (isDeleting) {
                 cvh.getDeleteButton().setVisibility(View.VISIBLE);

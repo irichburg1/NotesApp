@@ -10,6 +10,8 @@ import android.graphics.BitmapFactory;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -38,12 +40,7 @@ public class NotesDataSource {
             initialValues.put("notesTitle",n.getNotesTitle());
             initialValues.put("notesContent",n.getNotesContent());
             initialValues.put("importance",n.getImportance());
-            if (n.getPicture() != null) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                n.getPicture().compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] photo = baos.toByteArray();
-                initialValues.put("notesPicture", photo);
-            }
+            initialValues.put("date",n.getDate());
 
             didSucceed = database.insert("notes",null,initialValues) > 0;
         }
@@ -62,14 +59,7 @@ public class NotesDataSource {
             updateValues.put("notesTitle", n.getNotesTitle());
             updateValues.put("notesContent", n.getNotesContent());
             updateValues.put("importance", n.getImportance());
-
-
-            if (n.getPicture() != null) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                n.getPicture().compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] photo = baos.toByteArray();
-                updateValues.put("notesPicture", photo);
-            }
+            updateValues.put("date",n.getDate() );
 
             didSucceed = database.update("notes", updateValues, "_id=" + rowId, null) > 0;
         } catch (Exception e) {
@@ -113,7 +103,7 @@ public class NotesDataSource {
     }
 
     public ArrayList<Note> getNotes(String sortField, String sortOrder) {
-
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         ArrayList<Note> notes = new ArrayList<Note>();
         try {
             String query = "SELECT * FROM notes ORDER BY " + sortField + " " + sortOrder;
@@ -128,6 +118,8 @@ public class NotesDataSource {
                 newNote.setNotesTitle(cursor.getString(1));
                 newNote.setNotesContent(cursor.getString(2));
                 newNote.setImportance(cursor.getInt(3));
+                String dateString = cursor.getString(4);
+                newNote.setDate(formatter.parse(dateString));
                 notes.add(newNote);
                 cursor.moveToNext();
             }
@@ -139,7 +131,8 @@ public class NotesDataSource {
         return notes;
     }
 
-    public Note getSpecificNote(int noteId) {
+    public Note getSpecificNote(int noteId) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Note currentNote = new Note();
         String query = "SELECT  * FROM notes WHERE _id =" + noteId;
         Cursor cursor = database.rawQuery(query, null);
@@ -149,14 +142,9 @@ public class NotesDataSource {
             currentNote.setNotesTitle(cursor.getString(1));
             currentNote.setNotesContent(cursor.getString(2));
             currentNote.setImportance(cursor.getInt(3));
+            String dateString = cursor.getString(4);
+            currentNote.setDate(formatter.parse(dateString));
 
-/*
-            byte[] photo = cursor.getBlob(10);
-            if (photo != null) {
-                ByteArrayInputStream imageStream = new ByteArrayInputStream(photo);
-                Bitmap thePicture= BitmapFactory.decodeStream(imageStream);
-                currentNote.setPicture(thePicture);
-            }*/
             cursor.close();
         }
         return currentNote;

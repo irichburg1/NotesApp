@@ -33,7 +33,11 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         setForEditing(false);
         initTextChangedEvents();
         radioButtonChanged();
-        initSaveButton ();
+        initSaveButton();
     }
 
     //TOGGLEBUTTON for EDITING
@@ -185,9 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     currentNote.setImportance(3);
                 }
             }
-
         });
-
     }
 
     private void initSaveButton() {
@@ -195,12 +197,15 @@ public class MainActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener () {
             @Override
             public void onClick (View view) {
+                //SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+                Date date = new Date();
+
+                currentNote.setDate(date);
                 boolean wasSuccessful;
                 hideKeyboard();
                 NotesDataSource ds = new NotesDataSource(MainActivity.this);
                 try {
                     ds.open();
-
                     if (currentNote.getNoteID() == -1) {
                         wasSuccessful = ds.insertNotes(currentNote);
                         if (wasSuccessful) {
@@ -247,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
 
         EditText editTitle = findViewById(R.id.editTextTitle);
         EditText editContent = findViewById(R.id.editTextContent);
-        RadioGroup rgImportance = findViewById(R.id.radioGroupSort);
         RadioButton rbHigh = findViewById(R.id.radioButtonHigh);
         RadioButton rbMedium = findViewById(R.id.radioButtonMedium);
         RadioButton rbLow = findViewById(R.id.radioButtonLow);

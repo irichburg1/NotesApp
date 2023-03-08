@@ -3,15 +3,20 @@ package com.example.notesapp;
 
 import android.graphics.Bitmap;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Note {
+
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
     private int noteID;
     private String notesTitle;
     private String notesContent;
     private int importance;
-    private Bitmap picture;
+    private String date;
 
     public Note () {
         noteID = -1;
@@ -47,13 +52,13 @@ public class Note {
         this.notesContent = notesContent;
     }
 
-
-    public Bitmap getPicture() {
-        return picture;
+    public String getDate() {
+        return date;
     }
 
-    public void setPicture(Bitmap picture) {
-        this.picture = picture;
+    public void setDate(Date date) {
+        this.date = formatter.format(date);
+
     }
 }
 
